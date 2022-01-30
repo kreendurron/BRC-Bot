@@ -1,0 +1,9 @@
+ObservedDict(
+value=
+{
+  '178927049698836480': ObservedDict(value={'Name': 'Admin', 'exp': 1300, 'readingStreak': 47
+  }), '539517981668147200': ObservedDict(value={'Name': 'KAE', 'exp': 375, 'readingStreak': 6
+  }), '280834216080703489': ObservedDict(value={'Name': 'G_lefty', 'exp': 100, 'readingStreak': 0
+  }), '672248450867527690': ObservedDict(value={'Name': 'test', 'exp': 200, 'readingStreak': 1
+  })
+})

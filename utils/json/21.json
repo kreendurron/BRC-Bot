@@ -1,0 +1,41 @@
+{
+  "November": {
+    "27": "Lord's Day",
+    "28": "Song of Songs 1–8",
+    "29": "1 Samuel 1–5, Psalm 8",
+    "30": "1 Samuel 6–10, Psalm 150"
+  },
+  "December": {
+    "01": "1 Samuel 16–20, Psalm 59",
+    "02": "1 Samuel 16–20, Psalm 59",
+    "03": "1 Samuel 21–25, Psalms 34 & 54 (optional: Psalms 52 & 56)",
+    "04": "1 Samuel 26–31, Psalm 57 (optional: Psalm 63)",
+    "05": "Lord's Day",
+    "06": "2 Samuel 1–5, Psalm 13",
+    "07": "2 Samuel 6–10, Psalms 20–21",
+    "08": "2 Samuel 11–15, Psalm 51 (optional: Psalm 3)",
+    "09": "2 Samuel 16–18, Psalms 4–5 & 7",
+    "10": "2 Samuel 19–24, Psalms 18 & 50 (optional: Psalm 59)",
+    "11": "Catch-Up Day (optional: John 1, 1 John 1)",
+    "12": "Lord's Day",
+    "13": "Micah 1–7",
+    "14": "Luke 1–6",
+    "15": "Luke 7–12",
+    "16": "Luke 13–18",
+    "17": "Luke 19–24",
+    "18": "Ephesians 1–6",
+    "19": "Catch-Up Day (optional: John 1, 1 John 1)",
+    "20": "Isaiah 1–5, Psalm 148, (optional: Acts 8, John 1)",
+    "21": "Isaiah 6–10, Psalm 149",
+    "22": "Isaiah 11–15, Psalm 145",
+    "23": "Isaiah 16–20, Psalm 144",
+    "24": "Isaiah 21–25, Psalm 143",
+    "25": "Christmas Day (optional: Matthew 1–3, John 1–3)",
+    "26": "Lord's Day",
+    "27": "Isaiah 26–28, Matthew 1–3",
+    "28": "Isaiah 29–32, Matthew 4",
+    "29": "Isaiah 33–35, Matthew 5–7",
+    "30": "Isaiah 36–39, Matthew 8–9",
+    "31": "Isaiah 40–43, Matthew 10–11"
+  }
+}
