@@ -18,7 +18,7 @@ year = today.strftime("%y")
 # print("year =", year)
 
 # // DEFINE THE COG CLASS
-class BRC_ADMIN(commands.Cog): #Declares a cog name
+class BRC_USER(commands.Cog): #Declares a cog name
   """User Commands for The Bible Reading Challenge""" #Description of cog
 
   def __init__(self, bot: commands.Bot):
@@ -183,5 +183,5 @@ class BRC_ADMIN(commands.Cog): #Declares a cog name
 
 # DO NOT REMOVE! #
 def setup(bot: commands.Bot):
-  bot.add_cog(BRC_ADMIN(bot))
+  bot.add_cog(BRC_USER(bot))
 # DO NOT REMOVE! OR PLACE ANYTHING BELOW! #
