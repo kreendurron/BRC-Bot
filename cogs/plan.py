@@ -33,6 +33,7 @@ class Plan(commands.Cog): #Declares a cog name
   
   # // DAILY READING PLAN
   @commands.command()
+  @commands.has_role('BRC-Admin')
   async def day(self,ctx: commands.context):
     """Display's Today's Reading Schedule"""
     with open(f"./utils/json/{year}.json", "r") as f:

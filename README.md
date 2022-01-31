@@ -14,7 +14,7 @@ Commands
 
 >`!stats` - Displays your total XP gained and current reading streak.
 
->`!leaderboard` - Displays a list of challengers who have the highest reading streak.
+>`!leaderboard` - Sends a DM with a list of challengers who have the highest reading streak.
 
 **Reading Plan Commands**
 
@@ -23,13 +23,15 @@ Commands
 
 
 ---
-Admin Commands
+Admin Commands // Requires the role: `BRC-Admin`
 ---
 `Still need to make these available to admins only. Or role specific etc.`
 
-`!allUsers` - Displays a list of all users in the database.
+`!database` - Displays a list of all users in the database.
 
 `!delUser` - Takes a userId as an argument.
+
+`!leaders` - Show's the top five users with the highest reading streak.
 
 #
 **God Bless <3**
