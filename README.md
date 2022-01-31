@@ -25,7 +25,7 @@ Commands
 ---
 Admin Commands
 ---
-`Still need to make these availbe to admins only. Or role specific etc.`
+`Still need to make these available to admins only. Or role specific etc.`
 
 `allUsers` - Displays a list of all users in the database.
 
