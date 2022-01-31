@@ -9,10 +9,10 @@ Commands
 ---
 **BRC Commands**
 
-`!join` - Joing the Challenge! You will gain access to additional commands and start recieving XP
+`!join` - Join the Challenge! You will gain access to additional commands and start recieving XP
 >`!checkin` - After completeing each daily reading, use this command to check-in. You'll get some XP and your daily reading streak will increase. If you forget to check-in your reading streak will be reset. The higher your reading streak, the more XP you will earn daily.
 
->`!stats` - Will display your total XP gained and current reading streak.
+>`!stats` - Displays your total XP gained and current reading streak.
 
 >`!leaderboard` - Displays a list of challengers who have the highest reading streak.
 
@@ -27,7 +27,9 @@ Admin Commands
 ---
 `Still need to make these available to admins only. Or role specific etc.`
 
-`allUsers` - Displays a list of all users in the database.
+`!allUsers` - Displays a list of all users in the database.
+
+`!delUser` - Takes a userId as an argument.
 
 #
 **God Bless <3**
