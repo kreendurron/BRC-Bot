@@ -7,7 +7,7 @@ The Bible Reading Challenge Bot
 ---
 Commands
 ---
-**BRC Commands**
+**User Commands // Requires the role: `Brave-Bot-Testers` (While In Alpha)**
 
 `!join` - Join the Challenge! You will gain access to additional commands and start recieving XP
 >`!checkin` - After completeing each daily reading, use this command to check-in. You'll get some XP and your daily reading streak will increase. If you forget to check-in your reading streak will be reset. The higher your reading streak, the more XP you will earn daily.
