@@ -73,6 +73,7 @@ class BRC_USER(commands.Cog): #Declares a cog name
 
   # // CHECKIN COMMAND
   @commands.command(aliases=['check'])
+  @commands.has_role('Brave Bot Testers')
   @commands.cooldown(1,86400,commands.BucketType.user)
   async def checkin(self,ctx):
     """Increases your reading streak (work in progress)"""

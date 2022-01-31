@@ -46,7 +46,7 @@ class BRC_ADMIN(commands.Cog): #Declares a cog name
     
     await ctx.send(embed=embed)
 
-    await ctx.invoke(self.bot.get_command('allUsers'))
+    await ctx.invoke(self.bot.get_command('db'))
 
 
   # // Display Users Database
@@ -68,7 +68,8 @@ class BRC_ADMIN(commands.Cog): #Declares a cog name
 
   # // LEADERBOARD ADMIN COMMAND
   @commands.command(aliases=['members','users'])
-  @commands.has_role(['Brave Bot Testers','BRC_Admin']) #might cause a problem?
+  @commands.has_role('Brave Bot Testers')
+  @commands.has_role('BRC-Admin')
   async def leaders(self,ctx):
     """Displays a list of users who have joined the challenge."""
     
@@ -88,8 +89,8 @@ class BRC_ADMIN(commands.Cog): #Declares a cog name
          value=f"Reading Streak: {key['readingStreak']} \nExperiece Points: {key['exp']}",inline=True
         )
     
-    # await ctx.send(embed=embed)
-    await ctx.author.send(embed=embed)
+    await ctx.send(embed=embed)
+    # await ctx.author.send(embed=embed)
 
 
 
