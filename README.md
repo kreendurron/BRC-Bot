@@ -43,4 +43,4 @@ Admin Commands // Requires the role: `BRC-Admin`
 ```python
 import nextcord
 ```
-[![trophy](https://github-profile-trophy.vercel.app/?username=ryo-ma)](https://github.com/ryo-ma/github-profile-trophy)
+[![trophy](https://github-profile-trophy.vercel.app/?username=ryo-ma)](https://github.com/kreendurron/github-profile-trophy)
