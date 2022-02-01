@@ -11,6 +11,7 @@ aiosqlite = "^0.17.0"
 replit = "^3.2.4"
 pysqlite3 = "^0.4.6"
 nextcord = "^2.0.0-alpha.6"
+aiohttp = "^3.8.1"
 
 [tool.poetry.dev-dependencies]
 

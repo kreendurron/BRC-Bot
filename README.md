@@ -25,7 +25,6 @@ Commands
 ---
 Admin Commands // Requires the role: `BRC-Admin`
 ---
-`Still need to make these available to admins only. Or role specific etc.`
 
 `!database` - Displays a list of all users in the database.
 
