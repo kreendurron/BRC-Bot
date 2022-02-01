@@ -102,7 +102,7 @@ class Plan(commands.Cog): #Declares a cog name
 
       
     msg = await ctx.send(embed=embed)
-    await msg.add_reaction("✅") #To get the emoji, in nextcord type "\:emoji_name:" then highlight with cursor and copy paste into code
+    await msg.add_reaction("✅") #To get the emoji, in discord type "\:emoji_name:" then highlight with cursor and copy paste into code
 
 # DO NOT REMOVE! #
 def setup(bot: commands.Bot):
