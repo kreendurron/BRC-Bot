@@ -15,7 +15,7 @@ logging.basicConfig(level=logging.INFO)
 intents = nextcord.Intents.default()
 intents.members = True
 #To gather server members from whatever server the bot is in
-#REQUIRES ENABLING "SERVER MEMBER INTENT" FROM THE nextcord DEVELOPER PORTAL
+#REQUIRES ENABLING "SERVER MEMBER INTENT" FROM THE discord DEVELOPER PORTAL
 
 bot = commands.Bot(command_prefix = "!") #Change the prefix however you'd like
 
