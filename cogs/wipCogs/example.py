@@ -1,4 +1,4 @@
-from discord.ext import commands
+from nextcord.ext import commands
 #Don't Remove this import, you need it
 
 class Example(commands.Cog): #Declares a cog name

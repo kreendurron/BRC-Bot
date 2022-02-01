@@ -1,8 +1,8 @@
-import discord
+import nextcord
 import json
 import sys
 from datetime import date
-from discord.ext import commands
+from nextcord.ext import commands
 #Don't Remove this import, you need it
 import random
 sys.path.insert(0,'./utils/misc')
@@ -44,10 +44,10 @@ class Plan(commands.Cog): #Declares a cog name
       if not "," in dailyReading:
         print("comma not found")
         if "Catch" in dailyReading:
-          embed = discord.Embed(title=f"Catchup Day!", description=f"{dailyReading}\n\nDaily Encouragment: {random.choice(randEncouragments)}")
+          embed = nextcord.Embed(title=f"Catchup Day!", description=f"{dailyReading}\n\nDaily Encouragment: {random.choice(randEncouragments)}")
           print("Catch-up day!")
         elif "Lord's Day" in dailyReading:
-          embed = discord.Embed(title=f"Happy Lord's Day!", description=f"We will pick back up tomorrow!")
+          embed = nextcord.Embed(title=f"Happy Lord's Day!", description=f"We will pick back up tomorrow!")
           print("Lord's Day")
         else:
           firstReading = dailyReading.split(",")[0] #Luke 7-12
@@ -57,7 +57,7 @@ class Plan(commands.Cog): #Declares a cog name
           # firstChapterRange = cv1[1]
           firstChapter = cv1[1].split("–")[0] # This dash was different in the json that on the keyboard, copy/paste the dash from json data
           
-          embed = discord.Embed(title=f"Today's Reading for {month} {day}", description=f"**{dailyReading}**\n\nDaily Encouragment: {random.choice(randEncouragments)}")
+          embed = nextcord.Embed(title=f"Today's Reading for {month} {day}", description=f"**{dailyReading}**\n\nDaily Encouragment: {random.choice(randEncouragments)}")
           embed.set_image(url="https://biblereading.christkirk.com/wp-content/uploads/2021/08/7.-Replacement-for-website-header-1024x369.jpg")
           embed.set_author(name="The Bible Reading Challenge", url="https://revival-library.com/bible-reading-challenge")
           embed.add_field(name=f"Link",value=f"https://www.blueletterbible.org/kjv/{firstBook}/{firstChapter}")
@@ -66,7 +66,7 @@ class Plan(commands.Cog): #Declares a cog name
       else:
         print("comma found")
         if "Catch" in dailyReading:
-          embed = discord.Embed(title=f"Catchup Day!", description=f"{dailyReading}\n\nDaily Encouragment: {random.choice(randEncouragments)}")
+          embed = nextcord.Embed(title=f"Catchup Day!", description=f"{dailyReading}\n\nDaily Encouragment: {random.choice(randEncouragments)}")
           print("Catch-up day!")
         if "optional" in dailyReading:
           firstReading = dailyReading.split(",")[0] #Luke 7-12
@@ -76,7 +76,7 @@ class Plan(commands.Cog): #Declares a cog name
           # firstChapterRange = cv1[1]
           firstChapter = cv1[1].split("–")[0] # This dash was different in the json that on the keyboard, copy/paste the dash from json data
           
-          embed = discord.Embed(title=f"Today's Reading for {month} {day}", description=f"**{dailyReading}**\n\nDaily Encouragment: {random.choice(randEncouragments)}")
+          embed = nextcord.Embed(title=f"Today's Reading for {month} {day}", description=f"**{dailyReading}**\n\nDaily Encouragment: {random.choice(randEncouragments)}")
           embed.set_image(url="https://biblereading.christkirk.com/wp-content/uploads/2021/08/7.-Replacement-for-website-header-1024x369.jpg")
           embed.set_author(name="The Bible Reading Challenge", url="https://revival-library.com/bible-reading-challenge")
           embed.add_field(name=f"Link",value=f"https://www.blueletterbible.org/kjv/{firstBook}/{firstChapter}")
@@ -93,7 +93,7 @@ class Plan(commands.Cog): #Declares a cog name
           secondChapter = cv2[1].split("–")[0]
 
           # // EMBED
-          embed = discord.Embed(title=f"Today's Reading for {month} {day}", description=f"{dailyReading}\n\nDaily Encouragment: {random.choice(randEncouragments)}")
+          embed = nextcord.Embed(title=f"Today's Reading for {month} {day}", description=f"{dailyReading}\n\nDaily Encouragment: {random.choice(randEncouragments)}")
           embed.set_image(url="https://biblereading.christkirk.com/wp-content/uploads/2021/08/7.-Replacement-for-website-header-1024x369.jpg")
           embed.set_author(name="The Bible Reading Challenge", url="https://revival-library.com/bible-reading-challenge")
           embed.add_field(name=f"First Reading",value=f"https://www.blueletterbible.org/kjv/{firstBook}/{firstChapter}")

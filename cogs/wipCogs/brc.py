@@ -1,10 +1,10 @@
-import discord
+import nextcord
 import random
 import asyncio
 from replit import db
 import datetime
 from datetime import date, datetime, timedelta
-from discord.ext import commands
+from nextcord.ext import commands
 #Don't Remove this import, you need it
 today = date.today()
 # print("Today's date:", today)
@@ -60,7 +60,7 @@ class BRC(commands.Cog): #Declares a cog name
 
       
 
-      embed = discord.Embed(title=f"A New Challenger Has Entered The Arena!", description=f"Everyone welcome {author} along for the challenge! Here's {exp} experience points to start you off with!")
+      embed = nextcord.Embed(title=f"A New Challenger Has Entered The Arena!", description=f"Everyone welcome {author} along for the challenge! Here's {exp} experience points to start you off with!")
       
       embed.add_field(name=f"Experience Points:",value=f"{exp}",inline=True)
       embed.add_field(name=f"Reading Streak:",value=f"{streak}",inline=True)
@@ -89,7 +89,7 @@ class BRC(commands.Cog): #Declares a cog name
       exp = self.users[str(ctx.author.id)]["exp"]
       streak = self.users[str(ctx.author.id)]["readingStreak"]
 
-      embed = discord.Embed(
+      embed = nextcord.Embed(
         title = f"{author}'s Statistics",
         description = f"Keep in the word!")
 
@@ -111,7 +111,7 @@ class BRC(commands.Cog): #Declares a cog name
     await ctx.send(f'Here is a list of users who have joined The Bible Reading Challenge and have a reading streak of 5 or higher:')
     keys = self.users.values()
     streakLimit = 5
-    embed = discord.Embed(
+    embed = nextcord.Embed(
         title="Bible Reading Challengers",
         description=f"Here is a list of all users who have joined the bible reading challenge and have a reading streak of {streakLimit} or more:"
       )
@@ -135,7 +135,7 @@ class BRC(commands.Cog): #Declares a cog name
     
     del self.users[str(userid)]
         
-    embed = discord.Embed(
+    embed = nextcord.Embed(
       title = f"Deleted A User!",
       description = f"User: {userid} has been removed from the reading challenge."
     )
@@ -207,7 +207,7 @@ class BRC(commands.Cog): #Declares a cog name
       self.users[str(ctx.author.id)]["last_claim"] = str(now.timestamp())
       
       print(self.users[str(ctx.author.id)])
-      embed = discord.Embed(title=f"{author} Completed the Daily Reading!", colour=random.randint(0, 0xffffff), description=f"Great Job {author}!! By checking in daily, the amount of XP you recieve will be increased. \n**You just earned: {daily}xp**, now you have **XP: {amount_after}**")
+      embed = nextcord.Embed(title=f"{author} Completed the Daily Reading!", colour=random.randint(0, 0xffffff), description=f"Great Job {author}!! By checking in daily, the amount of XP you recieve will be increased. \n**You just earned: {daily}xp**, now you have **XP: {amount_after}**")
       embed.set_footer(text=f"Your daily streak: {streak}")
       await ctx.send(embed=embed)
   

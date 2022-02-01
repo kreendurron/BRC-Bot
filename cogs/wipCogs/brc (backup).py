@@ -1,9 +1,9 @@
-import discord
+import nextcord
 import json
 # import asyncio
 from replit import db
 from datetime import date
-from discord.ext import commands
+from nextcord.ext import commands
 #Don't Remove this import, you need it
 today = date.today()
 # print("Today's date:", today)
@@ -47,7 +47,7 @@ class BRC(commands.Cog): #Declares a cog name
         streak = data[str(ctx.author.id)]["readingStreak"] = 0
         print(f"{author} was not in the database originally but is now")
 
-        embed = discord.Embed(title=f"A New Challenger Has Entered The Arena!", description=f"Everyone welcome {author} along for the challenge! Here's {exp} experience points to start you off with!")
+        embed = nextcord.Embed(title=f"A New Challenger Has Entered The Arena!", description=f"Everyone welcome {author} along for the challenge! Here's {exp} experience points to start you off with!")
         # embed.set_author(name=f"{author}")
         embed.add_field(name=f"Experience Points:",value=f"{exp}",inline=True)
         embed.add_field(name=f"Reading Streak:",value=f"{streak}",inline=True)
@@ -80,7 +80,7 @@ class BRC(commands.Cog): #Declares a cog name
         exp = data[str(ctx.author.id)]["exp"]
         streak = data[str(ctx.author.id)]["readingStreak"]
 
-        embed = discord.Embed(title=f"{author}'s Statistics", description=f"Keep in the word!")
+        embed = nextcord.Embed(title=f"{author}'s Statistics", description=f"Keep in the word!")
         # embed.set_author(name=f"{author}")
         embed.add_field(name=f"Experience Points:",value=f"{exp}",inline=True)
         embed.add_field(name=f"Reading Streak:",value=f"{streak}",inline=True)

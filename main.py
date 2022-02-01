@@ -1,9 +1,9 @@
-import discord #DO NOT REMOVE
+import nextcord #DO NOT REMOVE
 import os #DO NOT REMOVE
 # import json
 # import time
 from keep_alive import keep_alive
-from discord.ext import commands #DO NOT REMOVE
+from nextcord.ext import commands #DO NOT REMOVE
 #Common imports for various features
 # import aiosqlite
 import logging
@@ -12,10 +12,10 @@ import logging
 
 logging.basicConfig(level=logging.INFO)
 
-intents = discord.Intents.default()
+intents = nextcord.Intents.default()
 intents.members = True
 #To gather server members from whatever server the bot is in
-#REQUIRES ENABLING "SERVER MEMBER INTENT" FROM THE DISCORD DEVELOPER PORTAL
+#REQUIRES ENABLING "SERVER MEMBER INTENT" FROM THE discord DEVELOPER PORTAL
 
 bot = commands.Bot(command_prefix = "!") #Change the prefix however you'd like
 
@@ -44,7 +44,7 @@ for filename in os.listdir("./cogs"):
 
 @bot.event
 async def on_ready():
-  await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="any Humans."))
+  await bot.change_presence(activity=nextcord.Activity(type=nextcord.ActivityType.listening, name="any Humans."))
   print(f"{bot.user} is online!") #Checks when the bot is online and prints it to the console
 
 @bot.event
