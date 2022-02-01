@@ -1,8 +1,8 @@
-import discord
+import nextcord
 import json
 import sys
 from datetime import date
-from discord.ext import commands
+from nextcord.ext import commands
 #Don't Remove this import, you need it
 import random
 sys.path.insert(0,'./utils/misc')

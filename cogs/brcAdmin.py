@@ -1,10 +1,10 @@
-import discord
+import nextcord
 import random
 import asyncio
 from replit import db
 import datetime
 from datetime import date, datetime, timedelta
-from discord.ext import commands
+from nextcord.ext import commands
 #Don't Remove this import, you need it
 today = date.today()
 # print("Today's date:", today)
@@ -39,7 +39,7 @@ class BRC_ADMIN(commands.Cog): #Declares a cog name
     
     del self.users[str(userid)]
         
-    embed = discord.Embed(
+    embed = nextcord.Embed(
       title = f"Deleted A User!",
       description = f"User: {userid} has been removed from the reading challenge."
     )
@@ -76,7 +76,7 @@ class BRC_ADMIN(commands.Cog): #Declares a cog name
     await ctx.send(f'Here is a list of users who have joined The Bible Reading Challenge and have a reading streak of 5 or higher:')
     keys = self.users.values()
     streakLimit = 5
-    embed = discord.Embed(
+    embed = nextcord.Embed(
         title="Bible Reading Challengers",
         description=f"Here is a list of all users who have joined the bible reading challenge and have a reading streak of {streakLimit} or more:"
       )

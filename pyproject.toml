@@ -1,16 +1,16 @@
 [tool.poetry]
-name = "repl_python3_Discord-Bot-Template-with-Cogs"
+name = "repl_python3_nextcord-Bot-Template-with-Cogs"
 version = "0.1.0"
 description = ""
 authors = ["Your Name <you@example.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
-discord = "^1.7.3"
 Flask = "^2.0.2"
 aiosqlite = "^0.17.0"
 replit = "^3.2.4"
 pysqlite3 = "^0.4.6"
+nextcord = "^2.0.0-alpha.6"
 
 [tool.poetry.dev-dependencies]
 
