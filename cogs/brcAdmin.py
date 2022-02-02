@@ -35,7 +35,7 @@ class BRC_ADMIN(commands.Cog): #Declares a cog name
   @commands.command()
   @commands.has_role('BRC-Admin')
   async def delUser(self,ctx,*,userid):
-    """Work in progress (Make this an Admin only command)"""
+    """Delete a user from the challenge. Takes a userID as an argument."""
     
     del self.users[str(userid)]
         
@@ -53,7 +53,7 @@ class BRC_ADMIN(commands.Cog): #Declares a cog name
   @commands.command(aliases=["db"])
   @commands.has_role('BRC-Admin')
   async def database(self,ctx):
-    """Displays all database users (Make this admin only command)"""
+    """Displays all database users and attributes."""
 
     await ctx.send(f'Here is a list of all users:')    
     

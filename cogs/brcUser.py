@@ -76,7 +76,7 @@ class BRC_USER(commands.Cog): #Declares a cog name
   @commands.has_role('Brave Bot Testers')
   @commands.cooldown(1,86400,commands.BucketType.user)
   async def checkin(self,ctx):
-    """Increases your reading streak (work in progress)"""
+    """This let's us know your reading along with us. It will increase your reading streak and give you an XP boost."""
 
     if str(ctx.author.id) not in self.users:
       

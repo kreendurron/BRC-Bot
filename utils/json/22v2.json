@@ -1,22 +1,22 @@
 {
   "January": {
     "01": {
-      "reading-01": "Catch-Up Day (optional: 1 John 1–5)",
-      "reading-02": "test"
+      "reading-01": "Chapter and Verses",
+      "reading-02": "Chapter and Verses"
     },
     "02": {
-      "v1": "Catch-Up Day (optional: 1 John 1–5)",
-      "v2": "test"
+      "reading-01": "Chapter and Verses",
+      "reading-02": "Chapter and Verses"
     }
   },
   "Feburary": {
     "01": {
-      "reading-01": "Catch-Up Day (optional: 1 John 1–5)",
-      "reading-02": "test"
+      "reading-01": "Chapter and Verses",
+      "reading-02": "Chapter and Verses"
     },
     "02": {
-      "v1": "Catch-Up Day (optional: 1 John 1–5)",
-      "v2": "test"
+      "reading-01": "Chapter and Verses",
+      "reading-02": "Chapter and Verses"
     }
   }
 }
