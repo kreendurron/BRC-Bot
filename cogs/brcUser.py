@@ -5,7 +5,8 @@ from replit import db
 import datetime
 from datetime import date, datetime, timedelta
 from nextcord.ext import commands
-#Don't Remove this import, you need it
+from main import brc_users
+
 today = date.today()
 # print("Today's date:", today)
 
@@ -23,7 +24,8 @@ class BRC_USER(commands.Cog): #Declares a cog name
 
   def __init__(self, bot: commands.Bot):
     self.bot = bot
-    self.users = db['users']
+    # self.users = brc_users # new mongo database
+    self.users = db['users'] # old replit database
     
   
   # // ON READY COMMAND
