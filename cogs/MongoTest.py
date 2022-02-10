@@ -8,7 +8,6 @@ import pymongo
 from nextcord.ext import commands
 from main import brc_users
 
-
 today = date.today()
 # print("Today's date:", today)
 
@@ -30,6 +29,7 @@ class MongoTest(commands.Cog):  #Declares a cog name
         self.bot = bot
         self.users = brc_users
 
+
     # // ON READY COMMAND
     @commands.Cog.listener()
     async def on_ready(self):
@@ -42,20 +42,42 @@ class MongoTest(commands.Cog):  #Declares a cog name
     async def brcUsers(self, ctx):
         """Displays all mongodb users and attributes."""
 
-        embed = nextcord.Embed(title="Bible Reading Challengers",description="Work In Progress, will eventually display the top 5 users with the highest rankings.")
+        embed = nextcord.Embed(
+            title="Bible Reading Challengers",
+            description=
+            "Work In Progress, will eventually display the top 5 users with the highest rankings."
+        )
 
         results = self.users.find({})
-        
-        for result in results:       
-          embed.add_field(
-            name=f"{result['Name']}",
-            value=f"XP: {result['XP']}\nReadingStreak: {result['readingStreak']}",
-            inline=True
-          )        
+
+        for result in results:
+            embed.add_field(
+                name=f"{result['Name']}",
+                value=
+                f"XP: {result['XP']}\nReadingStreak: {result['readingStreak']}",
+                inline=True)
 
         await ctx.send(embed=embed)
 
+
+    # // DELETE USER COMMAND
+    @commands.command()
+    @commands.has_role('BRC-Admin')
+    async def delMUser(self, ctx, *, userid):
+        """Delete a user from the challenge. Takes a userID as an argument."""
         
+        self.users.delete_one({"_id":str(userid)})
+
+        embed = nextcord.Embed(
+            title=f"Deleted A User!",
+            description=
+            f"User: {userid} has been removed from the reading challenge.")
+
+        await ctx.send(embed=embed)
+
+        await ctx.invoke(self.bot.get_command('mt'))
+
+
 # DO NOT REMOVE! #
 def setup(bot: commands.Bot):
     bot.add_cog(MongoTest(bot))
