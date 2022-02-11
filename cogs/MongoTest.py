@@ -29,15 +29,13 @@ class MongoTest(commands.Cog):  #Declares a cog name
         self.bot = bot
         self.users = brc_users
 
-
     # // ON READY COMMAND
     @commands.Cog.listener()
     async def on_ready(self):
         print('The MongoTest Cog is locked, loaded and ready.')
 
-
     # // Display Users Database
-    @commands.command(aliases=["mt"])
+    @commands.command(aliases=["users"])
     @commands.has_role('BRC-Admin')
     async def brcUsers(self, ctx):
         """Displays all mongodb users and attributes."""
@@ -59,14 +57,13 @@ class MongoTest(commands.Cog):  #Declares a cog name
 
         await ctx.send(embed=embed)
 
-
     # // DELETE USER COMMAND
     @commands.command()
     @commands.has_role('BRC-Admin')
-    async def delMUser(self, ctx, *, userid):
+    async def delUser(self, ctx, *, userid):
         """Delete a user from the challenge. Takes a userID as an argument."""
-        
-        self.users.delete_one({"_id":str(userid)})
+
+        self.users.delete_one({"_id": str(userid)})
 
         embed = nextcord.Embed(
             title=f"Deleted A User!",
@@ -77,6 +74,7 @@ class MongoTest(commands.Cog):  #Declares a cog name
 
         await ctx.invoke(self.bot.get_command('mt'))
 
+    
 
 # DO NOT REMOVE! #
 def setup(bot: commands.Bot):

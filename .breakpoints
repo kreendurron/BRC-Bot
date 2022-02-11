@@ -1,3 +1,12 @@
 {
-  "files": {}
+  "files": {
+    "cogs/MongoTest.py": [
+      {
+        "id": "48e0aa59-5605-44c1-8da4-4bc610d6ac74",
+        "line": 83,
+        "version": 1900,
+        "index": 2185
+      }
+    ]
+  }
 }
