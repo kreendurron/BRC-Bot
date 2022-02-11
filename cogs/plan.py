@@ -1,23 +1,12 @@
 import nextcord
 import json
 import sys
-from datetime import date
 from nextcord.ext import commands
-#Don't Remove this import, you need it
 import random
 sys.path.insert(0,'./utils/misc')
 from randStuff import randEncouragments
+from timeConfig import today, day, month, year
 
-today = date.today()
-print("Today's date:", today)
-
-# // TIME STUFF
-day = today.strftime("%d")
-# print("day =", day)
-month = today.strftime("%B")
-# print("month =", month)
-year = today.strftime("%y")
-# print("year =", year)
 
 # // DEFINE THE COG CLASS
 class Plan(commands.Cog): #Declares a cog name

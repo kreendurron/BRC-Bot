@@ -1,28 +1,11 @@
 import nextcord
-import random
-import asyncio
-from replit import db
-import datetime
 from datetime import date, datetime, timedelta
-import pymongo
 from nextcord.ext import commands
 from main import brc_users
-
-today = date.today()
-# print("Today's date:", today)
-
-# // TIME STUFF
-day = today.strftime("%d")
-# print("day =", day)
-month = today.strftime("%B")
-# print("month =", month)
-year = today.strftime("%y")
-
-# print("year =", year)
-
+# // END IMPORTS
 
 # // DEFINE THE COG CLASS
-class MongoTest(commands.Cog):  #Declares a cog name
+class BRC_Admin(commands.Cog):  #Declares a cog name
     """Admin Commands for The Bible Reading Challenge"""  #Description of cog
 
     def __init__(self, bot: commands.Bot):
@@ -78,7 +61,7 @@ class MongoTest(commands.Cog):  #Declares a cog name
 
 # DO NOT REMOVE! #
 def setup(bot: commands.Bot):
-    bot.add_cog(MongoTest(bot))
+    bot.add_cog(BRC_Admin(bot))
 
 
 # DO NOT REMOVE! OR PLACE ANYTHING BELOW! #

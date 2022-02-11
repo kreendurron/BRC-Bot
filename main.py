@@ -1,14 +1,10 @@
-import nextcord  #DO NOT REMOVE
-import os  #DO NOT REMOVE
-# import json
-# import time
+import nextcord
+import os
 from keep_alive import keep_alive
-from nextcord.ext import commands  #DO NOT REMOVE
-#Common imports for various features
-# import aiosqlite
+from nextcord.ext import commands
 import logging
 import pymongo
-# import dns
+# import dns # did this once just to have the package installed leaving this note as a reminder in case I decide to rebuild this in another environment
 
 logging.basicConfig(level=logging.INFO)
 

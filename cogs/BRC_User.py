@@ -1,25 +1,13 @@
 import nextcord
 import random
-import asyncio
-from replit import db
-import datetime
 from datetime import date, datetime, timedelta
+from replit import db
 from nextcord.ext import commands
-from main import brc_users
+# // END IMPORTS
 
-today = date.today()
-# print("Today's date:", today)
 
-# // TIME STUFF
-day = today.strftime("%d")
-# print("day =", day)
-month = today.strftime("%B")
-# print("month =", month)
-year = today.strftime("%y")
-# print("year =", year)
-
-# // DEFINE THE COG CLASS
-class BRC_USER(commands.Cog): #Declares a cog name
+# // COG CLASS
+class BRC_User(commands.Cog): #Declares a cog name
   """User Commands for The Bible Reading Challenge""" #Description of cog
 
   def __init__(self, bot: commands.Bot):
@@ -78,7 +66,10 @@ class BRC_USER(commands.Cog): #Declares a cog name
   @commands.has_role('Brave Bot Testers')
   @commands.cooldown(1,86400,commands.BucketType.user)
   async def checkin(self,ctx):
-    """This let's us know your reading along with us. It will increase your reading streak and give you an XP boost."""
+    """
+    This let's us know your reading along with us. 
+    It will increase your reading streak and give you an XP boost.
+    """
 
     if str(ctx.author.id) not in self.users:
       
@@ -186,5 +177,5 @@ class BRC_USER(commands.Cog): #Declares a cog name
 
 # DO NOT REMOVE! #
 def setup(bot: commands.Bot):
-  bot.add_cog(BRC_USER(bot))
+  bot.add_cog(BRC_User(bot))
 # DO NOT REMOVE! OR PLACE ANYTHING BELOW! #
