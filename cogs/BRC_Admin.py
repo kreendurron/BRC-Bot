@@ -55,7 +55,7 @@ class BRC_Admin(commands.Cog):  #Declares a cog name
 
         await ctx.send(embed=embed)
 
-        await ctx.invoke(self.bot.get_command('mt'))
+        await ctx.invoke(self.bot.get_command('brcUsers'))
 
     
 

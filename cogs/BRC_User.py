@@ -27,9 +27,9 @@ class BRC_User(commands.Cog): #Declares a cog name
   @commands.command(aliases=['enter', 'begin', 'j'])
   async def join(self,ctx):
     """Use this command to join the challenge."""
-    query = self.users.find_one({},{"_id":str(ctx.author.id)})  
-    print(query["_id"])
-    if query["_id"] == str(ctx.author.id):
+      
+    
+    if self.users.count_documents({"_id":str(ctx.author.id)},limit=1):
       
       print(f"{ctx.author.display_name} user tried to join but was already in the database..")
       
@@ -41,7 +41,7 @@ class BRC_User(commands.Cog): #Declares a cog name
       XP = 100
       streak = 0
       
-      self.users.insert_one({"_id":str(ctx.author.id),"Name":str(author),"XP":XP,"readingStreak":streak})
+      self.users.insert_one({"_id":str(ctx.author.id),"Name":str(author),"XP":XP,"readingStreak":streak, "last_claim":0})
       
       print(f"{author} was not in the database originally but is now")
 
