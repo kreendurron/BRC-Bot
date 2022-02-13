@@ -112,34 +112,39 @@ class BRC_User(commands.Cog): #Declares a cog name
 
 
   # // STATS COMMAND
-  # @commands.command(aliases=['data', 'list'])
-  # @commands.has_role('Brave Bot Testers')
-  # async def stats(self,ctx):
+  @commands.command(aliases=['data', 'list'])
+  @commands.has_role('Brave Bot Testers')
+  async def stats(self,ctx):
     
-  #   """Displays your statistics for the challenge."""
+    """Displays your statistics for the challenge."""
       
-  #   if str(ctx.author.id) not in self.users:
-      
-  #     print(f"Sorry you need to join the bible challenge first...")
-      
-  #     await ctx.send(f"Sorry you need to join the bible challenge first...")
-      
-  #   else:
-  #     author = self.users[str(ctx.author.id)]["Name"]
-  #     exp = self.users[str(ctx.author.id)]["exp"]
-  #     streak = self.users[str(ctx.author.id)]["readingStreak"]
+    if self.users.count_documents({"_id":str(ctx.author.id)},limit=1):
+      ctxuser = self.users.find({"_id":str(ctx.author.id)})
+      for user in ctxuser:
+        username = user["Name"]
+        xp = user["XP"]
+        streak = user["readingStreak"]
 
-  #     embed = nextcord.Embed(
-  #       title = f"{author}'s Statistics",
-  #       description = f"Keep in the word!")
+      embed = nextcord.Embed(
+        title = f"{username}'s Statistics",
+        description = f"Keep in the word!")
 
-  #     embed.add_field(
-  #       name=f"Experience Points:",
-  #       value=f"{exp}",inline=True)
-  #     embed.add_field(name=f"Reading Streak:",value=f"{streak}",inline=True)
-  #     embed.set_footer(text=f"This bot is still a work in progress. If you're feeling friendly my owner runs on coffee: paypal.me/revivallibrary")
+      embed.add_field(
+        name=f"Experience Points:",
+        value=f"{xp}",
+        inline=True)
+      embed.add_field(name=f"Reading Streak:",
+        value=f"{streak}",
+        inline=True)
+      embed.set_footer(text=f"This bot is still a work in progress. If you're feeling friendly my owner runs on coffee: paypal.me/revivallibrary")
     
-  #     await ctx.send(embed=embed)
+      await ctx.send(embed=embed)     
+      
+    else:
+      print(f"Sorry you need to join the bible challenge first...")
+      
+      await ctx.send(f"Sorry you need to join the bible challenge first...")
+      
   
 
   # // LEADERBOARD COMMAND
