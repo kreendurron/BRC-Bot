@@ -34,8 +34,7 @@ class BRC_Admin(commands.Cog):  #Declares a cog name
         for result in results:
             embed.add_field(
                 name=f"{result['Name']}",
-                value=
-                f"XP: {result['XP']}\nReadingStreak: {result['readingStreak']}",
+                value=f"XP: {result['XP']}\nReadingStreak: {result['readingStreak']}",
                 inline=True)
 
         await ctx.send(embed=embed)

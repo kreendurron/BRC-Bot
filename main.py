@@ -61,9 +61,10 @@ async def on_ready():
 @bot.event
 async def on_command_error(ctx, error):
     if isinstance(error, commands.CommandOnCooldown):
-        await ctx.send(
-            'Sorry, you wont be able to check in again for another  %.2fs. Yes... that is correct, seconds...why not convert to minuites you ask?? Well, maths thats why :)'
-            % error.retry_after)
+      mins = error.retry_after/int(60)
+      await ctx.send(
+          'Sorry, you wont be able to run that command for another  %.2f mins.'
+          % mins)
     raise error
 
 
