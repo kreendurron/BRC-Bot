@@ -41,7 +41,7 @@ class BRC_User(commands.Cog): #Declares a cog name
       XP = 100
       streak = 0
       
-      self.users.insert_one({"_id":str(ctx.author.id),"Name":str(author),"XP":XP,"readingStreak":streak, "last_claim":0})
+      self.users.insert_one({"_id":str(ctx.author.id),"Name":str(author),"XP":XP,"readingStreak":streak, "last_claim":1643736997})
       
       print(f"{author} was not in the database originally but is now")      
 
@@ -61,48 +61,55 @@ class BRC_User(commands.Cog): #Declares a cog name
   @commands.cooldown(1,86400,commands.BucketType.user)
   async def checkin(self,ctx):
     """
-    This let's us know your reading along with us. 
+    This let's us know your reading along with us. 86400
     It will increase your reading streak and give you an XP boost.
     """
     if not self.users.count_documents({"_id":str(ctx.author.id)},limit=1):
-  #   if str(ctx.author.id) not in self.users:
-      
+          
       print(f"Someone tried to checkin without joining the bible challenge first...")
       
       await ctx.send(f"Sorry you need to join the bible challenge first...\nPlease use the **`!join`** command first.")
       
     else:
-      ctxuser = self.users.find({"_id":str(ctx.author.id)})
-      for user in ctxuser:
+      # DO THE THING
+      for user in self.users.find({"_id":str(ctx.author.id)}):
+        username = user["Name"]
+        xp = user["XP"]
+        streak = user["readingStreak"]
+        last_claim_stamp = user["last_claim"]
+        
+
+        print(f"\nusername: {username}\nxp: {xp}\nstreak: {streak}\nlastclaim: {last_claim_stamp}")
+        print("///////////////")
+        last_claim = datetime.fromtimestamp(float(last_claim_stamp))
+        now = datetime.now()
+        delta = now -last_claim
+        
+        if delta < timedelta(hours=48):
+          print("reset streak")
+          self.users.update_one({"_id":str(ctx.author.id)},{"$inc":{"readingStreak":1}})
+        else:
+          print("increase streak")
+          self.users.update_one({"_id":str(ctx.author.id)},{"$set":{"readingStreak":1}})
+
+        base = int(50)
+        bonus = base + (streak * 5)
+
+        self.users.update_one({"_id":str(ctx.author.id)},{"$set":{"XP":base + bonus}})
+        self.users.update_one({"_id":str(ctx.author.id)},{"$set":{"last_claim":datetime.timestamp(now)}})
+
+      for user in self.users.find({"_id":str(ctx.author.id)}):
         username = user["Name"]
         xp = user["XP"]
         streak = user["readingStreak"]
         last_claim_stamp = user["last_claim"]
 
+        print(f"\nusername: {username}\nxp: {xp}\nstreak: {streak}\nlastclaim: {last_claim_stamp}")
+        print("///////////////")
 
-      print(f"last_claim_stamp: {last_claim_stamp}")
-      last_claim = datetime.fromtimestamp(float(last_claim_stamp))
-      print(f"last_claim: {last_claim}")
-      now = datetime.now()
-      delta = now - last_claim
-      xp = int(25)
-      # bonusXP = 50
-
-      if delta > timedelta(hours=48):
-        print("reset streak")
-        streak = 1
-      else:
-        print("increase streak")
-        streak += 1
-
-      daily = xp + (int(streak) * int(5))
-      amount_after = xp + daily
-      print(f"amount_after: {amount_after}")
-      user["readingStreak"] = streak
-      user["XP"] += int(daily)
-      user["last_claim"] = str(now.timestamp())
+        # Display The Thing
       
-      embed = nextcord.Embed(title=f"{username} Completed the Daily Reading!", colour=random.randint(0, 0xffffff), description=f"Great Job {username}!! By checking in daily, the amount of XP you recieve will be increased. \n**You just earned: {daily}xp**, now you have **XP: {amount_after}**")
+      embed = nextcord.Embed(title=f"{username} Completed the Daily Reading!", colour=random.randint(0, 0xffffff), description=f"Great Job {username}!! By checking in daily, the amount of XP you recieve will be increased. \n**You just earned: {base}xp**, now you have **XP: {xp}**")
       embed.set_footer(text=f"Your daily streak: {streak}")
       await ctx.send(embed=embed)
 
