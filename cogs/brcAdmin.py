@@ -1,100 +1,68 @@
-import discord
-import random
-import asyncio
-from replit import db
-import datetime
+import nextcord
 from datetime import date, datetime, timedelta
-from discord.ext import commands
-#Don't Remove this import, you need it
-today = date.today()
-# print("Today's date:", today)
-
-# // TIME STUFF
-day = today.strftime("%d")
-# print("day =", day)
-month = today.strftime("%B")
-# print("month =", month)
-year = today.strftime("%y")
-# print("year =", year)
+from nextcord.ext import commands
+from main import brc_users
+# // END IMPORTS
 
 # // DEFINE THE COG CLASS
-class BRC_ADMIN(commands.Cog): #Declares a cog name
-  """Admin Role Commands for The Bible Reading Challenge""" #Description of cog
+class BRC_Admin(commands.Cog):  #Declares a cog name
+    """Admin Commands for The Bible Reading Challenge"""  #Description of cog
 
-  def __init__(self, bot: commands.Bot):
-    self.bot = bot
-    self.users = db['users']
-    
-  
-  # // ON READY COMMAND
-  @commands.Cog.listener()
-  async def on_ready(self):
-    print('The BRC Cog is locked, loaded and ready.')
+    def __init__(self, bot: commands.Bot):
+        self.bot = bot
+        self.users = brc_users
 
-  # // DELETE USER COMMAND
-  @commands.command()
-  @commands.has_role('BRC-Admin')
-  async def delUser(self,ctx,*,userid):
-    """Work in progress (Make this an Admin only command)"""
-    
-    del self.users[str(userid)]
-        
-    embed = discord.Embed(
-      title = f"Deleted A User!",
-      description = f"User: {userid} has been removed from the reading challenge."
-    )
-    
-    await ctx.send(embed=embed)
+    # // ON READY COMMAND
+    @commands.Cog.listener()
+    async def on_ready(self):
+        print('The MongoTest Cog is locked, loaded and ready.')
 
-    await ctx.invoke(self.bot.get_command('db'))
+    # // Display Users Database
+    @commands.command(aliases=["users"])
+    @commands.has_role('BRC-Admin')
+    async def brcUsers(self, ctx):
+        """Displays all mongodb users and attributes."""
 
-
-  # // Display Users Database
-  @commands.command(aliases=["db"])
-  @commands.has_role('BRC-Admin')
-  async def database(self,ctx):
-    """Displays all database users (Make this admin only command)"""
-
-    await ctx.send(f'Here is a list of all users:')    
-    
-    keys = self.users.values()
-    for key in keys:
-      
-      await ctx.send(
-        # 'Name: {}\nStreak: {}'.format(key['Name'],key['readingStreak']))
-        key.items()
+        embed = nextcord.Embed(
+            title="Bible Reading Challengers",
+            description=
+            "Work In Progress, will eventually display the top 5 users with the highest rankings."
         )
 
+        results = self.users.find({})
 
-  # // LEADERBOARD ADMIN COMMAND
-  @commands.command(aliases=['members','users'])
-  @commands.has_role('Brave Bot Testers')
-  @commands.has_role('BRC-Admin')
-  async def leaders(self,ctx):
-    """Displays a list of users who have joined the challenge."""
+        for result in results:
+            embed.add_field(
+                name=f"{result['Name']}",
+                value=f"XP: {result['XP']}\nReadingStreak: {result['readingStreak']}",
+                inline=True)
+
+        await ctx.send(embed=embed)
+        await ctx.message.delete()
+
+    # // DELETE USER COMMAND
+    @commands.command()
+    @commands.has_role('BRC-Admin')
+    async def delUser(self, ctx, *, userid):
+        """Delete a user from the challenge. Takes a userID as an argument."""
+
+        self.users.delete_one({"_id": str(userid)})
+
+        embed = nextcord.Embed(
+            title=f"Deleted A User!",
+            description=
+            f"User: {userid} has been removed from the reading challenge.")
+
+        await ctx.send(embed=embed)
+        await ctx.message.delete()
+
+        await ctx.invoke(self.bot.get_command('brcUsers'))
+
     
-    await ctx.send(f'Here is a list of users who have joined The Bible Reading Challenge and have a reading streak of 5 or higher:')
-    keys = self.users.values()
-    streakLimit = 5
-    embed = discord.Embed(
-        title="Bible Reading Challengers",
-        description=f"Here is a list of all users who have joined the bible reading challenge and have a reading streak of {streakLimit} or more:"
-      )
-      
-    for key in keys:      
-      
-      if key['readingStreak'] >= streakLimit:
-        embed.add_field(
-         name=f"{key['Name']}",
-         value=f"Reading Streak: {key['readingStreak']} \nExperiece Points: {key['exp']}",inline=True
-        )
-    
-    await ctx.send(embed=embed)
-    # await ctx.author.send(embed=embed)
-
-
 
 # DO NOT REMOVE! #
 def setup(bot: commands.Bot):
-  bot.add_cog(BRC_ADMIN(bot))
+    bot.add_cog(BRC_Admin(bot))
+
+
 # DO NOT REMOVE! OR PLACE ANYTHING BELOW! #
