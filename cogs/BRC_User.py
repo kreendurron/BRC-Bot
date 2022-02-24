@@ -35,6 +35,7 @@ class BRC_User(commands.Cog): #Declares a cog name
       
       await ctx.send(f"Hi {ctx.author.display_name}!")
       await ctx.send(f"Woah there, we certainly love the enthusiasm... however, you have already joined The Bible Reading Challenge.")
+      await ctx.message.delete()
       
     else:
       author = ctx.author.display_name
@@ -50,10 +51,10 @@ class BRC_User(commands.Cog): #Declares a cog name
       embed.add_field(name=f"Experience Points:",value=f"{XP}",inline=True)
       embed.add_field(name=f"Reading Streak:",value=f"{streak}",inline=True)
       embed.set_footer(text=f"This bot is still a work in progress. If you're feeling friendly my owner runs on coffee: paypal.me/revivallibrary")
-
+      await ctx.message.delete()
       msg = await ctx.send(embed=embed)
       await msg.add_reaction("💖")
-
+      
 
   # // CHECKIN COMMAND
   @commands.command(aliases=['check'])
@@ -69,6 +70,7 @@ class BRC_User(commands.Cog): #Declares a cog name
       print(f"Someone tried to checkin without joining the bible challenge first...")
       
       await ctx.send(f"Sorry you need to join the bible challenge first...\nPlease use the **`!join`** command first.")
+      await ctx.message.delete()
       
     else:
       # DO THE THING
@@ -107,12 +109,17 @@ class BRC_User(commands.Cog): #Declares a cog name
         print(f"\nusername: {username}\nxp: {xp}\nstreak: {streak}\nlastclaim: {last_claim_stamp}")
         print("///////////////")
 
-        # Display The Thing
-      
-      embed = nextcord.Embed(title=f"{username} Completed the Daily Reading!", colour=random.randint(0, 0xffffff), description=f"Great Job {username}!! By checking in daily, the amount of XP you recieve will be increased. \n**You just earned: {base}xp**, now you have **XP: {xp}**")
-      embed.set_footer(text=f"Your daily streak: {streak}")
+      # Display The Thing      
+      embed = nextcord.Embed(
+        title=f"{username} Completed the Daily Reading!", colour=random.randint(0, 0xffffff),
+        description=f"**Command:** `!checkin` | **Used By:** {username}")
+      embed.add_field(
+         name=f"Great Job!!",
+         value=f"By checking in daily, the amount of XP you recieve will be increased. \n**You just earned: {base}xp**, now you have **XP: {xp}**",inline=True
+        )
+      embed.set_footer(text=f"Your daily streak: `{streak}`")
       await ctx.send(embed=embed)
-
+      await ctx.message.delete()
 
   # // STATS COMMAND
   @commands.command(aliases=['data', 'list'])
@@ -130,7 +137,7 @@ class BRC_User(commands.Cog): #Declares a cog name
 
       embed = nextcord.Embed(
         title = f"{username}'s Statistics",
-        description = f"Keep in the word!")
+        description = f"**Command:** `!stats` | **Used By:** {username}")
 
       embed.add_field(
         name=f"Experience Points:",
@@ -139,15 +146,16 @@ class BRC_User(commands.Cog): #Declares a cog name
       embed.add_field(name=f"Reading Streak:",
         value=f"{streak}",
         inline=True)
+      
       embed.set_footer(text=f"This bot is still a work in progress. If you're feeling friendly my owner runs on coffee: paypal.me/revivallibrary")
     
       await ctx.send(embed=embed)     
-      
+      await ctx.message.delete()
     else:
       print(f"Sorry you need to join the bible challenge first...")
       
       await ctx.send(f"Sorry you need to join the bible challenge first...")
-      
+      await ctx.message.delete()
   
 
   # // LEADERBOARD COMMAND

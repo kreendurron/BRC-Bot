@@ -38,6 +38,7 @@ class BRC_Admin(commands.Cog):  #Declares a cog name
                 inline=True)
 
         await ctx.send(embed=embed)
+        await ctx.message.delete()
 
     # // DELETE USER COMMAND
     @commands.command()
@@ -53,6 +54,7 @@ class BRC_Admin(commands.Cog):  #Declares a cog name
             f"User: {userid} has been removed from the reading challenge.")
 
         await ctx.send(embed=embed)
+        await ctx.message.delete()
 
         await ctx.invoke(self.bot.get_command('brcUsers'))
 
