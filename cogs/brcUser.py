@@ -50,9 +50,6 @@ class BRC_USER(commands.Cog): #Declares a cog name
       streak = 1
       
       self.users.update({str(ctx.author.id):{"Name":str(author),"exp":exp,"readingStreak":streak}})
-      # self.users[str(ctx.author.id)]["Name"] = author
-      # self.users[str(ctx.author.id)]["exp"] = exp      
-      # self.users[str(ctx.author.id)]["readingStreak"] = streak
 
       
       print(f"self.users: {self.users}")
