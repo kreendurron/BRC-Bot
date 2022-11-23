@@ -1,6 +1,6 @@
-import nextcord
-from datetime import date, datetime, timedelta
-from nextcord.ext import commands
+import discord
+# from datetime import date, datetime, timedelta
+from discord.ext import commands
 from main import brc_users
 # // END IMPORTS
 
@@ -8,14 +8,14 @@ from main import brc_users
 class BRC_Admin(commands.Cog):  #Declares a cog name
     """Admin Commands for The Bible Reading Challenge"""  #Description of cog
 
-    def __init__(self, bot: commands.Bot):
+    def __init__(self, bot: commands.bot):
         self.bot = bot
         self.users = brc_users
 
     # // ON READY COMMAND
     @commands.Cog.listener()
     async def on_ready(self):
-        print('The MongoTest Cog is locked, loaded and ready.')
+        print('The BRC_Admin Cog is locked, loaded and ready.')
 
     # // Display Users Database
     @commands.command(aliases=["users"])
@@ -23,7 +23,7 @@ class BRC_Admin(commands.Cog):  #Declares a cog name
     async def brcUsers(self, ctx):
         """Displays all mongodb users and attributes."""
 
-        embed = nextcord.Embed(
+        embed = discord.Embed(
             title="Bible Reading Challengers",
             description=
             "Work In Progress, will eventually display the top 5 users with the highest rankings."
@@ -48,7 +48,7 @@ class BRC_Admin(commands.Cog):  #Declares a cog name
 
         self.users.delete_one({"_id": str(userid)})
 
-        embed = nextcord.Embed(
+        embed = discord.Embed(
             title=f"Deleted A User!",
             description=
             f"User: {userid} has been removed from the reading challenge.")
@@ -61,8 +61,10 @@ class BRC_Admin(commands.Cog):  #Declares a cog name
     
 
 # DO NOT REMOVE! #
-def setup(bot: commands.Bot):
-    bot.add_cog(BRC_Admin(bot))
+# async def setup(bot: commands.bot):
+#     await bot.add_cog(BRC_Admin(bot))
 
-
+async def setup(bot):
+  await bot.add_cog(BRC_Admin(bot))
+  
 # DO NOT REMOVE! OR PLACE ANYTHING BELOW! #
