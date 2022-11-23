@@ -1,8 +1,8 @@
-import nextcord
+import discord
 import random
-from datetime import date, datetime, timedelta
-from replit import db
-from nextcord.ext import commands
+# from datetime import date, datetime, timedelta
+# from replit import db | can probably delete this now that we migrated to mongodb
+from discord.ext import commands
 from main import brc_users
 # // END IMPORTS
 
@@ -11,8 +11,8 @@ from main import brc_users
 class BRC_User(commands.Cog): #Declares a cog name
   """User Commands for The Bible Reading Challenge""" #Description of cog
 
-  def __init__(self, bot: commands.Bot):
-    self.bot = bot
+  def __init__(self, client: commands.client):
+    self.client = client
     self.users = brc_users # new mongo database
     # self.users = db['users'] # old replit database
     
@@ -46,11 +46,11 @@ class BRC_User(commands.Cog): #Declares a cog name
       
       print(f"{author} was not in the database originally but is now")      
 
-      embed = nextcord.Embed(title=f"A New Challenger Has Entered The Arena!", description=f"Everyone welcome {author} along for the challenge! Here's {XP} experience points to start you off with!")
+      embed = discord.Embed(title=f"A New Challenger Has Entered The Arena!", description=f"Everyone welcome {author} along for the challenge! Here's {XP} experience points to start you off with!")
       
       embed.add_field(name=f"Experience Points:",value=f"{XP}",inline=True)
       embed.add_field(name=f"Reading Streak:",value=f"{streak}",inline=True)
-      embed.set_footer(text=f"This bot is still a work in progress. If you're feeling friendly my owner runs on coffee: paypal.me/revivallibrary")
+      embed.set_footer(text=f"This client is still a work in progress. If you're feeling friendly my owner runs on coffee: paypal.me/revivallibrary")
       await ctx.message.delete()
       msg = await ctx.send(embed=embed)
       await msg.add_reaction("💖")
@@ -58,7 +58,7 @@ class BRC_User(commands.Cog): #Declares a cog name
 
   # // CHECKIN COMMAND
   @commands.command(aliases=['check'])
-  @commands.has_role('Brave Bot Testers')
+  @commands.has_role('Brave client Testers')
   @commands.cooldown(1,86400,commands.BucketType.user)
   async def checkin(self,ctx):
     """
@@ -110,7 +110,7 @@ class BRC_User(commands.Cog): #Declares a cog name
         print("///////////////")
 
       # Display The Thing      
-      embed = nextcord.Embed(
+      embed = discord.Embed(
         title=f"{username} Completed the Daily Reading!", colour=random.randint(0, 0xffffff),
         description=f"**Command:** `!checkin` | **Used By:** {username}")
       embed.add_field(
@@ -123,7 +123,7 @@ class BRC_User(commands.Cog): #Declares a cog name
 
   # // STATS COMMAND
   @commands.command(aliases=['data', 'list'])
-  @commands.has_role('Brave Bot Testers')
+  @commands.has_role('Brave client Testers')
   async def stats(self,ctx):
     
     """Displays your statistics for the challenge."""
@@ -135,7 +135,7 @@ class BRC_User(commands.Cog): #Declares a cog name
         xp = user["XP"]
         streak = user["readingStreak"]
 
-      embed = nextcord.Embed(
+      embed = discord.Embed(
         title = f"{username}'s Statistics",
         description = f"**Command:** `!stats` | **Used By:** {username}")
 
@@ -147,7 +147,7 @@ class BRC_User(commands.Cog): #Declares a cog name
         value=f"{streak}",
         inline=True)
       
-      embed.set_footer(text=f"This bot is still a work in progress. If you're feeling friendly my owner runs on coffee: paypal.me/revivallibrary")
+      embed.set_footer(text=f"This client is still a work in progress. If you're feeling friendly my owner runs on coffee: paypal.me/revivallibrary")
     
       await ctx.send(embed=embed)     
       await ctx.message.delete()
@@ -160,14 +160,14 @@ class BRC_User(commands.Cog): #Declares a cog name
 
   # // LEADERBOARD COMMAND
   # @commands.command()
-  # @commands.has_role('Brave Bot Testers')
+  # @commands.has_role('Brave client Testers')
   # async def leaderboard(self,ctx):
   #   """Displays a list of users who have joined the challenge."""
     
   #   await ctx.send(f'Here is a list of users who have joined The Bible Reading Challenge and have a reading streak of 5 or higher:')
   #   keys = self.users.values()
   #   streakLimit = 5
-  #   embed = nextcord.Embed(
+  #   embed = discord.Embed(
   #       title="Bible Reading Challengers",
   #       description=f"Here is a list of all users who have joined the bible reading challenge and have a reading streak of {streakLimit} or more:"
   #     )
@@ -188,6 +188,6 @@ class BRC_User(commands.Cog): #Declares a cog name
   
 
 # DO NOT REMOVE! #
-def setup(bot: commands.Bot):
-  bot.add_cog(BRC_User(bot))
+def setup(client: commands.client):
+  client.add_cog(BRC_User(client))
 # DO NOT REMOVE! OR PLACE ANYTHING BELOW! #
