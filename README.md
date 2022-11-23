@@ -5,6 +5,8 @@ The Bible Reading Challenge Bot
 [Read More](https://revival-library.com/bible-reading-challenge)...
 
 ---
+
+!important... many of these features are currently broken and WIP.
 Commands
 ---
 **User Commands // Requires the role: `Brave-Bot-Testers` (While In Alpha)**
